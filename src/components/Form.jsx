@@ -43,8 +43,12 @@ const Form = ({ categoryId }) => {
 
   return (
     <form ref={formRef}>
-      <input onChange={addingNote} className='col-4' type="text" name="note" />
-      <button type="submit" className="col-2 btn btn-primary" onClick={onAdd}>Add note</button>
+      <div className="row p-2">
+        <div className="col-8">
+          <input onChange={addingNote} className='form-control' type="text" name="note" />
+        </div>
+        <button type="submit" className="col-4 btn btn-primary" onClick={onAdd}>Add note</button>
+      </div>
     </form>
   )
 }

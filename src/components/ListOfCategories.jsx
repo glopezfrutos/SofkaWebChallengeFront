@@ -66,11 +66,15 @@ const ListOfCategories = () => {
     return (
         <div>
             {state.listOfCategories.map(element => {
-                return <div className="card" key={element.id}>
-                    <h3 className="card-title">{element.category}
-                        <button className="btn btn-primary" onClick={() => onEdit(element)}><i className="fa-solid fa-pen-to-square"></i></button>
-                        <button className="btn btn-danger" onClick={() => onDelete(element)}><i className="fa-solid fa-trash"></i></button>
-                    </h3>
+                return <div className="card p-3 col-6" key={element.id}>
+                    <div className="container">
+                        <h3 className="card-title p-2">
+                            <div className="row">
+                                <div className="col-8">{element.category}</div>
+                                <button className="col-4 btn btn-danger" onClick={() => onDelete(element)}><i className="fa-solid fa-trash"></i></button>
+                            </div>
+                        </h3>
+                    </div>
                     <div className="card-body">
                         <ListOfToDo notes={element.notes} />
                         <Form categoryId={element.id} />

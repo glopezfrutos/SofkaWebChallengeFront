@@ -38,10 +38,14 @@ const FormForCategories = () => {
   }
 
   return (
-      <form ref={formRef}>
-          <input onChange={addingCategory} className='col-4' type="text" name="category" id="category" required />
-          <button type="submit" className="col-2 btn btn-primary" onClick={onAdd}>New list</button>
+    <div className="container col-6 p-3">
+      <form className="row" ref={formRef}>
+        <div className="col-8">
+          <input onChange={addingCategory} className='form-control' type="text" name="category" id="category" required />
+        </div>
+        <button type="submit" className="col-4 btn btn-primary" onClick={onAdd}>New list</button>
       </form>
+    </div>
   )
 }
 

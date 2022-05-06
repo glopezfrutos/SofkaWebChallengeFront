@@ -3,8 +3,14 @@ import reducer from './Reducer'
 
 const initialState = {
     category: {
-        id: '',
-        title: "",
+        id: "",
+        category: "",
+        notes: [{
+            id: "",
+            note: "",
+            done: "",
+            fkCategoryId: ""
+        }]
     },
     listOfCategories: []
 }

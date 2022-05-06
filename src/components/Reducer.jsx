@@ -1,5 +1,5 @@
-function reducer(state, action){
-    switch(action.type){
+function reducer(state, action) {
+    switch (action.type) {
         case 'get-categories':
             const stateWithAllTheNotes2 = {
                 ...state,
@@ -15,45 +15,48 @@ function reducer(state, action){
             return newStateAddedCategory
         case 'remove-category':
             const newListOfNotesWithoutPayloadNote2 = state.listOfCategories.filter(note => note.id !== action.payload.id)
-            const newStateWithNoteDeleted2 = {...state, listOfCategories: newListOfNotesWithoutPayloadNote2}
+            const newStateWithNoteDeleted2 = { ...state, listOfCategories: newListOfNotesWithoutPayloadNote2 }
             return newStateWithNoteDeleted2
         case 'update-category':
             const newListOfNotes2 = state.listOfCategories.map(note => {
-                if(note.id == action.payload.id){
+                if (note.id == action.payload.id) {
                     return action.payload
                 }
                 return note
-                })
-            const newStateModifiedCheckbox2 = {...state, listOfCategories: newListOfNotes2}
+            })
+            const newStateModifiedCheckbox2 = { ...state, listOfCategories: newListOfNotes2 }
             return newStateModifiedCheckbox2
+
+        case 'get-notes':
+            const stateWithAllTheNotes = {
+                ...state,
+                listOfNotes: action.payload
+            }
+            return stateWithAllTheNotes
+        case 'add-note':
+            console.log(action.payload)
+            const newNote = action.payload;
+            const newListOfNotesAddedOne = [...state.listOfNotes, newNote]
+            const newStateAddedNote = {
+                ...state, listOfNotes: newListOfNotesAddedOne
+            }
+            return newStateAddedNote
+        case 'remove-note':
+            const newListOfNotesWithoutPayloadNote = state.listOfNotes.filter(note => note.id !== action.payload.id)
+            const newStateWithNoteDeleted = { ...state, listOfNotes: newListOfNotesWithoutPayloadNote }
+            return newStateWithNoteDeleted
         
-            case 'get-notes':
-                const stateWithAllTheNotes = {
-                    ...state,
-                    listOfNotes: action.payload
-                }
-                return stateWithAllTheNotes
-            case 'add-note':
-                console.log(action.payload)
-                const newNote = action.payload;
-                const newListOfNotesAddedOne = [...state.listOfNotes, newNote]
-                const newStateAddedNote = {
-                    ...state, listOfNotes: newListOfNotesAddedOne
-                }
-                return newStateAddedNote
-            case 'remove-note':
-                const newListOfNotesWithoutPayloadNote = state.listOfNotes.filter(note => note.id !== action.payload.id)
-                const newStateWithNoteDeleted = {...state, listOfNotes: newListOfNotesWithoutPayloadNote}
-                return newStateWithNoteDeleted
-            case 'update-note':
-                const newListOfNotes = state.listOfNotes.map(note => {
-                    if(note.id == action.payload.id){
+        case 'update-note':
+            const newListOfNotes = state.listOfCategories.map(category => {
+                const subList = category.notes.map(note => {
+                    if (note.id == action.payload.id) {
                         return action.payload
                     }
                     return note
-                    })
-                const newStateModifiedCheckbox = {...state, listOfNotes: newListOfNotes}
-                return newStateModifiedCheckbox
+                })
+                return {...category, notes: subList}
+            })
+            return { ...state, listOfCategories: newListOfNotes }
     }
 }
 

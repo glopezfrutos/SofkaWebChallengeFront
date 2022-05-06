@@ -3,8 +3,9 @@ import { Store } from './StoreProvider'
 
 const ListOfToDo = ({ notes }) => {
 
-    /* const { state, dispatch } = useContext(Store)
+    const { state, dispatch } = useContext(Store)
 
+    /*
     const fetchAllNotes = async () => {
         let response = await fetch(`http://localhost:8081/api/get/notes`)
         let data = await response.json()
@@ -22,7 +23,7 @@ const ListOfToDo = ({ notes }) => {
             }
         )
 
-    }, [])
+    }, []) */
 
     const onCheckbox = async (event, note) => {
         const checked = event.currentTarget.checked;
@@ -48,6 +49,7 @@ const ListOfToDo = ({ notes }) => {
         })
     }
 
+    /*
     const onDelete = async (note) => {
         let response = await fetch(`http://localhost:8081/api/delete/note/${note.id}`,
             {

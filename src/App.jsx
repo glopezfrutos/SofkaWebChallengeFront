@@ -1,8 +1,7 @@
 import './App.css'
-import ListOfToDo from './components/ListOfCategories'
-import StoreProvider from './components/StoreProvider'
-import Form from './components/Form'
 import ListOfCategories from './components/ListOfCategories'
+import StoreProvider from './components/StoreProvider'
+import FormForCategories from './components/FormForCategories'
 
 function App() {
 
@@ -12,8 +11,8 @@ function App() {
         <div className="card-body">
           <h1 className="card-title">To-do List App</h1>
           <div>
-          <Form />
-          <ListOfToDo />
+          <FormForCategories />
+          <ListOfCategories />
           </div>
         </div>
       </StoreProvider>

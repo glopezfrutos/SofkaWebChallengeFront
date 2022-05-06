@@ -9,7 +9,6 @@ const Form = () => {
     if (title && message) {
       const noteFromForm = {
         title,
-        message,
         done: false
       }
 
@@ -28,32 +27,25 @@ const Form = () => {
         type: 'add-note',
         payload: noteSaved
       })
-      
+
       formRef.current.reset();
     }
   }
 
-  const{state, dispatch} = useContext(Store)
+  const { state, dispatch } = useContext(Store)
 
   const [title, setTitle] = useState('');
-
-  const [message, setMessage] = useState('');
 
   const addingTitle = (e) => {
     setTitle(e.target.value)
   }
 
-  const addingMessage = (e) => {
-    setMessage(e.target.value)
-  }
 
   return (
     <form ref={formRef}>
-        <label>Title: </label>
-        <input onChange={addingTitle} type="text" name="title"/>
-        <label>Message:</label>
-        <input onChange={addingMessage} type="text" name="message"/>
-        <button onClick={onAdd}>Add note</button>
+      <label className="form-label">Title: </label>
+      <input onChange={addingTitle} type="text" name="title" />
+      <button type="submit" className="btn btn-primary" onClick={onAdd}>Add note</button>
     </form>
   )
 }

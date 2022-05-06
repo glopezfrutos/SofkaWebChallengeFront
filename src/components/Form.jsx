@@ -13,7 +13,7 @@ const Form = () => {
         done: false
       }
 
-      let noteSavedPromise = await fetch(`http://localhost:8081/api/save/note`, {
+      let noteSavedPromise = await fetch(`http://localhost:8081/api/save/category`, {
         method: 'POST',
         headers: {
           'Content-type': 'application/json'

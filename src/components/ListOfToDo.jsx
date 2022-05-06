@@ -6,7 +6,7 @@ const ListOfToDo = () => {
     const { state, dispatch } = useContext(Store)
 
     const fetchAllNotes = async () => {
-        let response = await fetch(`http://localhost:8081/api/get/notes`)
+        let response = await fetch(`http://localhost:8081/api/get`)
         let data = await response.json()
         return data
     }
@@ -48,15 +48,15 @@ const ListOfToDo = () => {
         })
     }
 
-    const onDelete = async (note) => {
-        let response = await fetch(`http://localhost:8081/api/delete/note/${note.id}`,
+    const onDelete = async (category) => {
+        let response = await fetch(`http://localhost:8081/api/delete/category/${category.id}`,
             {
                 method: 'DELETE'
             })
         if(response.status === 200){
             dispatch({
                 type: 'remove-note',
-                payload: note
+                payload: category
             })
         }
     }

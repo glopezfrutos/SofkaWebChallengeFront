@@ -27,12 +27,6 @@ function reducer(state, action) {
             const newStateModifiedCheckbox2 = { ...state, listOfCategories: newListOfNotes2 }
             return newStateModifiedCheckbox2
 
-        case 'get-notes':
-            const stateWithAllTheNotes = {
-                ...state,
-                listOfNotes: action.payload
-            }
-            return stateWithAllTheNotes
         case 'add-note':
             console.log(action.payload)
             const newNote = action.payload;
@@ -41,11 +35,14 @@ function reducer(state, action) {
                 ...state, listOfNotes: newListOfNotesAddedOne
             }
             return newStateAddedNote
+
         case 'remove-note':
-            const newListOfNotesWithoutPayloadNote = state.listOfNotes.filter(note => note.id !== action.payload.id)
-            const newStateWithNoteDeleted = { ...state, listOfNotes: newListOfNotesWithoutPayloadNote }
-            return newStateWithNoteDeleted
-        
+            const newListOfNotesWithoutPayloadNote = state.listOfCategories.map(category => {
+                const newSubListDelete = category.notes.filter(note => note.id !== action.payload.id)
+                return {...category, notes: newSubListDelete }
+            })
+            return { ...state, listOfCategories: newListOfNotesWithoutPayloadNote }
+
         case 'update-note':
             const newListOfNotes = state.listOfCategories.map(category => {
                 const subList = category.notes.map(note => {
@@ -54,7 +51,7 @@ function reducer(state, action) {
                     }
                     return note
                 })
-                return {...category, notes: subList}
+                return { ...category, notes: subList }
             })
             return { ...state, listOfCategories: newListOfNotes }
     }

@@ -49,7 +49,7 @@ const ListOfToDo = ({ notes }) => {
         })
     }
 
-    /*
+    
     const onDelete = async (note) => {
         let response = await fetch(`http://localhost:8081/api/delete/note/${note.id}`,
             {
@@ -61,7 +61,7 @@ const ListOfToDo = ({ notes }) => {
                 payload: note
             })
         }
-    } */
+    }
 
     return (
         <div className='container'>
@@ -70,8 +70,8 @@ const ListOfToDo = ({ notes }) => {
                     <div className="col-1"><input onChange={(event) => onCheckbox(event, note)} type="checkbox" checked={note.done} /></div>
                     <div className="col-5">{note.note} </div>
                     <div className="col-6">
-                        <button className="btn btn-primary" onClick={() => onEdit(element)}><i className="fa-solid fa-pen-to-square"></i> </button>
-                        <button className="btn btn-danger" onClick={() => onDelete(element)}><i className="fa-solid fa-trash"></i> </button>
+                        <button className="btn btn-primary" onClick={() => onEdit(note)}><i className="fa-solid fa-pen-to-square"></i> </button>
+                        <button className="btn btn-danger" onClick={() => onDelete(note)}><i className="fa-solid fa-trash"></i> </button>
                     </div>
                 </div>
             })}

@@ -7,7 +7,7 @@ const FormForCategories = () => {
   const onAdd = async (event) => {
     event.preventDefault();
     if (category) {
-      const categoryFromForm = {category}
+      const categoryFromForm = { category }
 
       let categorySavedPromise = await fetch(`http://localhost:8081/api/save/category`, {
         method: 'POST',
@@ -24,12 +24,12 @@ const FormForCategories = () => {
         type: 'add-category',
         payload: categorySaved
       })
-      
+
       formRef.current.reset();
     }
   }
 
-  const{state, dispatch} = useContext(Store)
+  const { state, dispatch } = useContext(Store)
 
   const [category, setCategory] = useState('');
 
@@ -38,11 +38,10 @@ const FormForCategories = () => {
   }
 
   return (
-    <form ref={formRef}>
-        <label className="form-label"></label>
-        <input onChange={addingCategory} type="text" name="category" id="category" required />
-        <button type="submit" className="btn btn-primary" onClick={onAdd}>New List</button>
-    </form>
+      <form ref={formRef}>
+          <input onChange={addingCategory} className='col-4' type="text" name="category" id="category" required />
+          <button type="submit" className="col-2 btn btn-primary" onClick={onAdd}>New list</button>
+      </form>
   )
 }
 

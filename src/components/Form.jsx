@@ -1,18 +1,19 @@
 import React, { useState, useContext, useRef } from 'react'
 import { Store } from './StoreProvider';
 
-const Form = () => {
+const Form = ({ categoryId }) => {
   const formRef = useRef(null)
 
   const onAdd = async (event) => {
     event.preventDefault();
-    if (title && message) {
+    if (note) {
       const noteFromForm = {
-        title,
-        done: false
+        note,
+        done: false,
+        fkCategoryId: categoryId
       }
 
-      let noteSavedPromise = await fetch(`http://localhost:8081/api/save/category`, {
+      let noteSavedPromise = await fetch(`http://localhost:8081/api/save/note`, {
         method: 'POST',
         headers: {
           'Content-type': 'application/json'
@@ -21,7 +22,6 @@ const Form = () => {
       })
 
       let noteSaved = await noteSavedPromise.json();
-      console.log(noteSaved);
 
       dispatch({
         type: 'add-note',
@@ -34,18 +34,17 @@ const Form = () => {
 
   const { state, dispatch } = useContext(Store)
 
-  const [title, setTitle] = useState('');
+  const [note, setNote] = useState('');
 
-  const addingTitle = (e) => {
-    setTitle(e.target.value)
+  const addingNote = (e) => {
+    setNote(e.target.value)
   }
 
 
   return (
     <form ref={formRef}>
-      <label className="form-label">Title: </label>
-      <input onChange={addingTitle} type="text" name="title" />
-      <button type="submit" className="btn btn-primary" onClick={onAdd}>Add note</button>
+      <input onChange={addingNote} className='col-4' type="text" name="note" />
+      <button type="submit" className="col-2 btn btn-primary" onClick={onAdd}>Add note</button>
     </form>
   )
 }

@@ -28,13 +28,20 @@ function reducer(state, action) {
             return newStateModifiedCheckbox2
 
         case 'add-note':
-            console.log(action.payload)
-            const newNote = action.payload;
-            const newListOfNotesAddedOne = [...state.listOfNotes, newNote]
-            const newStateAddedNote = {
-                ...state, listOfNotes: newListOfNotesAddedOne
-            }
-            return newStateAddedNote
+            /* Doesn't work */
+
+            const newNote = action.payload
+            const newListOfNotesAddedOne = state.listOfCategories.map(category => {
+                if (category.id == newNote.fkCategoryId) {
+                    let subList = {...category.notes, newNote}
+                    return {...category, notes: subList}
+                }
+                return {...category}
+            })
+            console.log(newListOfNotesAddedOne);
+            console.log(state.listOfCategories);
+            return { ...state, listOfCategories: newListOfNotesAddedOne }
+
 
         case 'remove-note':
             const newListOfNotesWithoutPayloadNote = state.listOfCategories.map(category => {

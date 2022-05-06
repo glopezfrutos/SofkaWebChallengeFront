@@ -72,8 +72,8 @@ const ListOfCategories = () => {
                         <button className="btn btn-danger" onClick={() => onDelete(element)}><i className="fa-solid fa-trash"></i></button>
                     </h3>
                     <div className="card-body">
-                        {/* <Form /> */}
                         <ListOfToDo notes={element.notes} />
+                        <Form categoryId={element.id} />
                     </div>
                 </div>
             })}

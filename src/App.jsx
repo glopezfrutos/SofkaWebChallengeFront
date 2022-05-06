@@ -1,18 +1,23 @@
 import './App.css'
-import ListOfToDo from './components/ListOfToDo'
+import ListOfToDo from './components/ListOfCategories'
 import StoreProvider from './components/StoreProvider'
 import Form from './components/Form'
+import ListOfCategories from './components/ListOfCategories'
 
 function App() {
 
   return (
-    
+    <div className="card">
       <StoreProvider>
-        <h1>Hello from my app</h1>
-        <Form />
-        <ListOfToDo />
+        <div className="card-body">
+          <h1 className="card-title">To-do List App</h1>
+          <div>
+          <Form />
+          <ListOfToDo />
+          </div>
+        </div>
       </StoreProvider>
-    
+    </div>
   )
 }
 

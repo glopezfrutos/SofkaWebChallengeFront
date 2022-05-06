@@ -1,7 +1,7 @@
 import React, { useContext, useEffect } from 'react'
 import { Store } from './StoreProvider'
 
-const ListOfToDo = ({notes}) => {
+const ListOfToDo = ({ notes }) => {
 
     /* const { state, dispatch } = useContext(Store)
 
@@ -62,17 +62,17 @@ const ListOfToDo = ({notes}) => {
     } */
 
     return (
-        <div>
-            <ul>
-                {notes.map(note => {
-                    console.log(note)
-                    return <li style={note.done ? { textDecoration: 'line-through' } : {}} key={note.id}>
-                        {note.note} <br />
-                        <input onChange={(event) => onCheckbox(event, note)} type="checkbox" checked={note.done} />
-                        <button onClick={() => onDelete(note)}>Delete</button>
-                    </li>
-                })}
-            </ul>
+        <div className='container'>
+            {notes.map(note => {
+                return <div className="row" style={note.done ? { textDecoration: 'line-through' } : {}} key={note.id}>
+                    <div className="col-1"><input onChange={(event) => onCheckbox(event, note)} type="checkbox" checked={note.done} /></div>
+                    <div className="col-5">{note.note} </div>
+                    <div className="col-6">
+                        <button className="btn btn-primary" onClick={() => onEdit(element)}><i className="fa-solid fa-pen-to-square"></i> </button>
+                        <button className="btn btn-danger" onClick={() => onDelete(element)}><i className="fa-solid fa-trash"></i> </button>
+                    </div>
+                </div>
+            })}
         </div>
     )
 }

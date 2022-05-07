@@ -28,27 +28,15 @@ function reducer(state, action) {
                 })
             return { ...state, listOfCategories: newListOfCategoriesUpdated }
 
-
         case 'add-note':
-            /* Doesn't work 
-            const newCategory = action.payload;
-            const newListOfCategories = [...state.listOfCategories, newCategory]
-            return { ...state, listOfCategories: newListOfCategories }
-            
-            */
-
-            const newNote = action.payload
-            const newListOfNotesAddedOne = state.listOfCategories.map(category => {
-                if (category.id == newNote.fkCategoryId) {
-                    let subList = { ...category.notes, newNote }
-                    return { ...category, notes: subList }
-                }
-                return { ...category }
-            })
-            console.log({...state, listOfCategories: newListOfNotesAddedOne })
-            console.log(newListOfNotesAddedOne)
+            const newListOfNotesAddedOne = state.listOfCategories.map(
+                category => {
+                    if (category.id == action.payload.id) {
+                        return action.payload
+                    }
+                    return category
+                })
             return { ...state, listOfCategories: newListOfNotesAddedOne }
-
 
         case 'remove-note':
             const newListOfNotesWithoutPayloadNote = state.listOfCategories.map(category => {

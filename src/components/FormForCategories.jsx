@@ -38,12 +38,12 @@ const FormForCategories = () => {
   }
 
   return (
-    <div className="container col-6 p-3">
+    <div className="container p-3">
       <form className="row" ref={formRef}>
         <div className="col-8">
           <input onChange={addingCategory} className='form-control' type="text" name="category" id="category" required />
         </div>
-        <button type="submit" className="col-4 btn btn-primary" onClick={onAdd}>New list</button>
+        <button type="submit" className="col-4 btn btn-primary" onClick={onAdd}>New category list</button>
       </form>
     </div>
   )

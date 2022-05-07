@@ -1,7 +1,7 @@
 import React, { useContext, useEffect } from 'react'
 import { Store } from './StoreProvider'
 import ListOfToDo from './ListOfToDo'
-import Form from './Form'
+import FormForTasks from './FormForTasks'
 
 const ListOfCategories = () => {
 
@@ -66,7 +66,7 @@ const ListOfCategories = () => {
     return (
         <div>
             {state.listOfCategories.map(element => {
-                return <div className="card p-3 col-6" key={element.id}>
+                return <div className="card p-3" key={element.id}>
                     <div className="container">
                         <h3 className="card-title p-2">
                             <div className="row">
@@ -77,7 +77,7 @@ const ListOfCategories = () => {
                     </div>
                     <div className="card-body">
                         <ListOfToDo notes={element.notes} />
-                        <Form categoryId={element.id} />
+                        <FormForTasks categoryId={element.id} />
                     </div>
                 </div>
             })}

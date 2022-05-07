@@ -17,15 +17,15 @@ const initialState = {
 
 const Store = createContext(initialState)
 
-const StoreProvider = ( { children } ) => {
+const StoreProvider = ({ children }) => {
     const [state, dispatch] = useReducer(reducer, initialState)
-    
+
     return (
-        <Store.Provider value={{state, dispatch}}>
+        <Store.Provider value={{ state, dispatch }}>
             {children}
         </Store.Provider>
     )
 }
 
 export default StoreProvider
-export {Store, initialState}
+export { Store, initialState }

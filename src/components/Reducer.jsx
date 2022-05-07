@@ -18,7 +18,7 @@ function reducer(state, action) {
             )
             return { ...state, listOfCategories: newListOfCategoriesOneDeleted }
 
-        case 'update-category':
+        case 'update-category', 'add-note':
             const newListOfCategoriesUpdated = state.listOfCategories.map(
                 category => {
                     if (category.id == action.payload.id) {
@@ -28,15 +28,6 @@ function reducer(state, action) {
                 })
             return { ...state, listOfCategories: newListOfCategoriesUpdated }
 
-        case 'add-note':
-            const newListOfNotesAddedOne = state.listOfCategories.map(
-                category => {
-                    if (category.id == action.payload.id) {
-                        return action.payload
-                    }
-                    return category
-                })
-            return { ...state, listOfCategories: newListOfNotesAddedOne }
 
         case 'remove-note':
             const newListOfNotesWithoutPayloadNote = state.listOfCategories.map(category => {

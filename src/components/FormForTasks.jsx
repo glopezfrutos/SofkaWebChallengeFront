@@ -1,7 +1,7 @@
 import React, { useState, useContext, useRef } from 'react'
 import { Store } from './StoreProvider';
 
-const Form = ({ categoryId }) => {
+const FormForTasks = ({ categoryId }) => {
   const formRef = useRef(null)
 
   const onAdd = async (event) => {
@@ -42,15 +42,17 @@ const Form = ({ categoryId }) => {
 
 
   return (
-    <form ref={formRef}>
-      <div className="row p-2">
-        <div className="col-8">
-          <input onChange={addingNote} className='form-control' type="text" name="note" />
+    <div className='container'>
+      <form ref={formRef}>
+        <div className="row p-1">
+          <div className="col-6 offset-2">
+            <input onChange={addingNote} className='form-control' type="text" name="note" />
+          </div>
+          <button type="submit" className="col-4 btn btn-primary" onClick={onAdd}>Add note</button>
         </div>
-        <button type="submit" className="col-4 btn btn-primary" onClick={onAdd}>Add note</button>
-      </div>
-    </form>
+      </form>
+    </div>
   )
 }
 
-export default Form
+export default FormForTasks

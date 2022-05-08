@@ -43,18 +43,21 @@ const FormTaskEdition = ({ actualNote }) => {
 
 
   return (
-    <div className='card p-2'>
-      <div className='card-title'>
-        <h5>Edit note: {actualNote.note}</h5>
+    <div>
+      <div className="modal-header">
+        <h5 className="modal-title">Edit note: {actualNote.note}</h5>
+        <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
-      <form className="card-body" ref={formRef}>
-        <div className="row">
-          <div className="col-8">
-            <input onChange={changingNote} className='form-control' type="text" name="note" />
-          </div>
-          <button type="submit" className="col-4 btn btn-primary" onClick={onAdd}><i className="fa-solid fa-check"></i></button>
-        </div>
-      </form>
+      <div className="modal-body">
+        <form ref={formRef}>
+          <label className="form-label">New note name: </label>
+          <input onChange={changingNote} className='form-control' type="text" name="note" />
+        </form>
+      </div>
+      <div className="modal-footer">
+        <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" className="btn btn-primary" onClick={onAdd} data-bs-dismiss="modal"><i className="fa-solid fa-check"></i></button>
+      </div>
     </div>
   )
 }

@@ -18,7 +18,6 @@ const FormForCategories = () => {
       })
 
       let categorySaved = await categorySavedPromise.json();
-      console.log(categorySaved)
 
       dispatch({
         type: 'add-category',
@@ -38,12 +37,15 @@ const FormForCategories = () => {
   }
 
   return (
-    <div className="container p-3">
-      <form className="row" ref={formRef}>
-        <div className="col-8">
-          <input onChange={addingCategory} className='form-control' type="text" name="category" id="category" required />
+    <div className='container'>
+      <form ref={formRef}>
+        <div className="row p-3">
+        <label className=" col-sm-2 form-label">New categoy: </label>
+          <div className="col-sm-5">
+            <input onChange={addingCategory} className='form-control' type="text" name="category" id="category" required />
+          </div>
+          <button type="submit" className="col-sm-5 btn btn-primary" onClick={onAdd}>Add category list</button>
         </div>
-        <button type="submit" className="col-4 btn btn-primary" onClick={onAdd}>New category list</button>
       </form>
     </div>
   )

@@ -11,8 +11,8 @@ function App() {
         <div className="card-body">
           <h1 className="card-title">To-do List App</h1>
           <div>
-            <FormForCategories />
             <ListOfCategories />
+            <FormForCategories />
           </div>
         </div>
       </StoreProvider>

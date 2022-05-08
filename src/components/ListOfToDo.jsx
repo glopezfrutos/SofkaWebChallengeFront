@@ -44,12 +44,8 @@ const ListOfToDo = ({ notes }) => {
         }
     }
 
-    const [noteToEdit, setactualNoteToEdit] = useState(true);
-
     return (
         <div className='container'>
-
-
             {notes.map(note => {
                 return <div className="row p-1" key={note.id}>
                     <div className="col-2"><input onChange={(event) => onCheckbox(event, note)} type="checkbox" checked={note.done} /></div>
@@ -74,8 +70,6 @@ const ListOfToDo = ({ notes }) => {
                     </div>
                 </div>
             })}
-
-
         </div>
     )
 }

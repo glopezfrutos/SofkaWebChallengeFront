@@ -69,12 +69,12 @@ const ListOfCategories = () => {
                 {state.listOfCategories.map(category => {
                     return <div className="card col-md-6 p-3" key={category.id}>
                         <div className="container">
-                            <h3 className="card-title p-2">
-                                <div className="row">
-                                    <div className="col-8">{category.category}</div>
-                                    <button className="col-4 btn btn-danger" onClick={() => onDelete(category)}><i className="fa-solid fa-trash"></i></button>
-                                </div>
-                            </h3>
+                            <div className="row p-1">
+                                <h3 className="card-title col-9">{category.category}
+
+                                </h3>
+                                <button className="col-2 btn btn-danger" onClick={() => onDelete(category)}><i className="fa-solid fa-trash"></i></button>
+                            </div>
                         </div>
                         <div className="card-body">
                             <ListOfToDo notes={category.notes} />
@@ -83,7 +83,7 @@ const ListOfCategories = () => {
                     </div>
                 })}
             </div>
-        </div>
+        </div >
     )
 }
 

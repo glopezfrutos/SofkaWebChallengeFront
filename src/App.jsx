@@ -6,15 +6,11 @@ import FormForCategories from './components/FormForCategories'
 function App() {
 
   return (
-    <div className="card">
+    <div className="p-5">
+      <h1>To-do List App</h1>
       <StoreProvider>
-        <div className="card-body">
-          <h1 className="card-title">To-do List App</h1>
-          <div>
-            <ListOfCategories />
-            <FormForCategories />
-          </div>
-        </div>
+        <ListOfCategories />
+        <FormForCategories />
       </StoreProvider>
     </div>
   )
